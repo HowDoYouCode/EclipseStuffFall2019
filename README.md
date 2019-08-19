@@ -1,2 +1,2 @@
 # EclipseStuffFall2019
-Eclipse code for APCS
+Eclipse java code for APCS
