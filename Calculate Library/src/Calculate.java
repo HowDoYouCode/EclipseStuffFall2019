@@ -4,14 +4,14 @@
  * 4th period
  * */
 public class Calculate {
-	//returns the square of an integer 
+	//returns the square of the value passed.
 		public static int square(int number) {
 			return number * number;
 		}
 		public static double square(double number) {
 			return number * number;
 		}
-		//returns the cube of an integer 
+		//returns the cube of an int
 		public static int cube(int number) {
 			return number * number * number;
 		}
@@ -19,7 +19,7 @@ public class Calculate {
 		public static double average(double num1, double num2) {
 			return (num1 + num2)/2;
 		}
-		//overloaded method, returns average of three doubles
+		//overloaded method. returns average of three doubles
 		public static double average(double num1, double num2, double num3) {
 			return (num1 + num2 + num3)/3;
 		}
@@ -57,7 +57,7 @@ public class Calculate {
 		}
 		//returns boolean base on if int a is divisible by int b
 		public static boolean isDivisibleBy(int num1, int num2) {
-			if(num2 == 0)throw new IllegalArgumentException("you can't divid by 0 i-idiot");
+			if(num2 == 0)throw new IllegalArgumentException("Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends. (▀̿Ĺ̯▀̿ ̿)");
 			if(num1 % num2 == 0) {
 				return true;
 			}else {
@@ -118,7 +118,7 @@ public class Calculate {
 			return b;
 		}//returns value(double) for base^exp
 		public static double exponent(double base, int exp) {
-			if(exp < 0)throw new IllegalArgumentException("this program can't do negative exp =]");
+			if(exp < 0)throw new IllegalArgumentException("Error cannot compute negative exponent (╯ ͠° ͟ʖ ͡°)╯┻━┻");
 			double baseHolder = base;
 			if(exp == 0) {
 				return 1;
@@ -129,7 +129,7 @@ public class Calculate {
 			return baseHolder;
 		}//returns factorial of inputed num
 		public static int factorial(int num) {
-			if(num < 0)throw new IllegalArgumentException("Can not input negative number i-idiot");
+			if(num < 0)throw new IllegalArgumentException("Cannot input negative number ¯\\_(ツ)_/¯");
 			if(num == 0){
 				return 1;
 			}
@@ -161,15 +161,15 @@ public class Calculate {
 			absValue(a);
 			num1= (int)a;
 			return num1;
-		}//returns sqrt rounded to 2 dec places with Newton's method
+		}//returns square root rounded to 2 decimal places with Newton's fancy method
 		public static double sqrt(double num) {
-			if(num < 0)throw new IllegalArgumentException("You can't sqrt a negative number and get a real number i-idiot");
+			if(num < 0)throw new IllegalArgumentException("You can't SquareRoot a negative number ಠ_ಠ");
 			double value = 1; 
 			while(!(absValue(num - square(value)) < 0.001)) {
 				value = 0.5 * (num / value + value);
 			}
 			return round2(value);
-		}//returns a String with the value of the output of the quadform when inputed a,b,c unless no real roots
+		}//returns a String with the value of the output of the quadratic formula when inputed a,b,c unless no real roots
 		public static String quadForm(int a, int b, int c) {
 			if(discriminant(a, b, c) < 0) {
 				return "no real roots";
