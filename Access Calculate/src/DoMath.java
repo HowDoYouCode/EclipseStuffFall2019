@@ -19,7 +19,7 @@ public class DoMath {
 		System.out.println("IsDivisibleBy: "+Calculate.isDivisibleBy(1, 2));
 		System.out.println("AbsValue: "+Calculate.absValue(-22));
 		System.out.println("Max: "+Calculate.max(22, 11));
-		System.out.println("MaxOverload: "+Calculate.max(22, 11, -33));
+		System.out.println("MaxOverload: "+Calculate.max(23, 12, -63));
 		System.out.println("Min: "+Calculate.min(22, 11));
 		System.out.println("Round: "+Calculate.round2(5.051));
 		System.out.println("Exponent: "+Calculate.exponent(5, 2));

@@ -41,10 +41,10 @@ public class Calculate {
 			return fracNumer + "/" + denom;
 		}
 		//returns mixed number(String) when input numerator and denominator 
-		public static String toMixedNum(int numer, int demon) {
-			int wholeNum = numer / demon;
-			int newNumer = numer % demon;
-			return wholeNum +"_" + newNumer + "/" + demon;
+		public static String toMixedNum(int numer, int base) {
+			int wholeNum = numer / base;
+			int newNumer = numer % base;
+			return wholeNum +"_" + newNumer + "/" + base;
 		}
 		//converts (ax+b)(cx+d) to ax^2 + bx + c 
 		public static String foil(int a, int b, int c, int d, String x) {
