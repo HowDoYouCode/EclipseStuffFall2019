@@ -16,12 +16,12 @@ public class Calculate {
 			return number * number * number;
 		}
 		//returns the average of two doubles
-		public static double average(double num1, double num2) {
-			return (num1 + num2)/2;
+		public static double average(double number1, double number2) {
+			return (number1 + number2)/2; 
 		}
 		//overloaded method. returns average of three doubles
-		public static double average(double num1, double num2, double num3) {
-			return (num1 + num2 + num3)/3;
+		public static double average(double number1, double number2, double number3) {
+			return (number1 + number2 + number3)/3;
 		}
 		//returns degrees(double) of the inputed radians(double)
 		public static double toDegrees(double radians) {
@@ -56,52 +56,52 @@ public class Calculate {
 			return f + x + "^2" + " + " + oi + x + " + " + l;
 		}
 		//returns boolean base on if int a is divisible by int b
-		public static boolean isDivisibleBy(int num1, int num2) {
-			if(num2 == 0)throw new IllegalArgumentException("Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends. (▀̿Ĺ̯▀̿ ̿)");
-			if(num1 % num2 == 0) {
+		public static boolean isDivisibleBy(int number1, int number2) {
+			if(number2 == 0)throw new IllegalArgumentException("Imagine that you have zero cookies and you split them evenly among zero friends. How many cookies does each person get? See? It doesn't make sense. And Cookie Monster is sad that there are no cookies, and you are sad that you have no friends. (▀̿Ĺ̯▀̿ ̿)");
+			if(number1 % number2 == 0) {
 				return true;
 			}else {
 				return false;
 			}
 		}
 		//returns absolute value(double) of inputed double 
-		public static double absValue(double num) {
-			if(num < 0) {
-				return -num;
+		public static double absValue(double number) {
+			if(number < 0) {
+				return -number;
 			}else {
-				return num;
+				return number;
 			}
 		}
 		//returns the larger value double of the two inputed doubles
-		public static double max(double num1, double num2) {
-			if(num1 > num2) {
-				return num1;
+		public static double max(double number1, double number2) {
+			if(number1 > number2) {
+				return number1;
 			}else {
-				return num2;
+				return number2;
 			}
 		}
 		//returns the larger value double of the three inputed doubles
-		public static double max(double num1, double num2, double num3) {
-			if(num1 > num2) {
-				if(num1 > num3) {
-					return num1;
+		public static double max(double number1, double number2, double number3) {
+			if(number1 > number2) {
+				if(number1 > number3) {
+					return number1;
 				}else {
-					return num3;
+					return number3;
 				}
 			}else {
-				if(num2 > num3) {
-					return num2;
+				if(number2 > number3) {
+					return number2;
 				}else {
-					return num3;
+					return number3;
 				}
 			}
 		}
 		//returns the smaller value int of the two inputed int
-		public static int min(int num1, int num2) {
-			if(num1 < num2) {
-				return num1;
+		public static int min(int number1, int number2) {
+			if(number1 < number2) {
+				return number1;
 			}else
-				return num2;
+				return number2;
 		}
 		//returns a double rounded to 2 decimal places from inputed double
 		public static double round2(double dec) {
@@ -128,15 +128,15 @@ public class Calculate {
 			}
 			return baseHolder;
 		}//returns factorial of inputed num
-		public static int factorial(int num) {
-			if(num < 0)throw new IllegalArgumentException("Cannot input negative number ¯\\_(ツ)_/¯");
-			if(num == 0){
+		public static int factorial(int number) {
+			if(number < 0)throw new IllegalArgumentException("Cannot input negative number ¯\\_(ツ)_/¯");
+			if(number == 0){
 				return 1;
 			}
-			for(int count = num-1; count >= 1; count--) {
-				num *= count;
+			for(int count = number-1; count >= 1; count--) {
+				number *= count;
 			}
-			return num;
+			return number;
 		}//returns boolean(true or false) according if it is a prime number
 		public static boolean isPrime(int a) {
 			int b = 2;
@@ -151,22 +151,22 @@ public class Calculate {
 			}
 			return true;
 		}//returns the greatest common factor of num1 and num2
-		public static int gcf(int num1, int num2) {
-			while (num2 != 0) {
-				int replace = num1;
-				num1 = num2;
-				num2 = replace % num2;
+		public static int gcf(int number1, int number2) {
+			while (number2 != 0) {
+				int replace = number1;
+				number1 = number2;
+				number2 = replace % number2;
 			}
-			double a = (double)num1;
+			double a = (double)number1;
 			absValue(a);
-			num1= (int)a;
-			return num1;
+			number1= (int)a;
+			return number1;
 		}//returns square root rounded to 2 decimal places with Newton's fancy method
-		public static double sqrt(double num) {
-			if(num < 0)throw new IllegalArgumentException("You can't SquareRoot a negative number ಠ_ಠ");
+		public static double sqrt(double number) {
+			if(number < 0)throw new IllegalArgumentException("You can't SquareRoot a negative number ಠ_ಠ");
 			double value = 1; 
-			while(!(absValue(num - square(value)) < 0.001)) {
-				value = 0.5 * (num / value + value);
+			while(!(absValue(number - square(value)) < 0.001)) {
+				value = 0.5 * (number / value + value);
 			}
 			return round2(value);
 		}//returns a String with the value of the output of the quadratic formula when inputed a,b,c unless no real roots
