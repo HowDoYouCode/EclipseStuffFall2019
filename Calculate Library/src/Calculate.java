@@ -1,6 +1,6 @@
 public class Calculate {
 		//returns the int of a squre inputed
-		public static double square(int number) {
+		public static int square(int number) {
 		return number * number;
 		}
 		public static double square(double number) {
