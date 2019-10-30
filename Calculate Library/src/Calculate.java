@@ -1,9 +1,8 @@
-/* ZhanHeng Mai
- * Creating a Calculate Library this do math tasks
- * August 29 2019
- * 4th period
- * */
 public class Calculate {
+		//returns the int of a squre inputed
+		public static double square(int number) {
+		return number * number;
+		}
 		public static double square(double number) {
 			return number * number;
 		}

@@ -1,8 +1,3 @@
-/* ZhanHeng Mai
- * Creating a Calculate Library
- * August 29 2019
- * 4th period
- * */
 public class DoMath {
 
 	public static void main(String[] args) {
