@@ -8,7 +8,7 @@ public class FracCalc {
         // TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner Userin = new Scanner(System.in);
     	String input = Userin.nextLine();
-    	producseAnswer(input);
+    	produceAnswer(input);
     	}
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
