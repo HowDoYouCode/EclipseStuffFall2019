@@ -8,7 +8,10 @@ public class FracCalc {
         // TODO: Read the input from the user and call produceAnswer with an equation
     	Scanner Userin = new Scanner(System.in);
     	String input = Userin.nextLine();
-    	System.out.print(produceAnswer(input));
+    	while (!input.equals("quit")) {
+    		System.out.print(produceAnswer(input));
+    		input = Userin.nextLine();
+    	}
     	Userin.close();
     	}
     
@@ -23,8 +26,9 @@ public class FracCalc {
     public static String produceAnswer(String input)
     { 
         // TODO: Implement this function to produce the solution to the input
-        
-    	return input; 
+        String[] operand = input.split(" ");
+        String Answer = operand[2];
+    	return Answer;  
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
