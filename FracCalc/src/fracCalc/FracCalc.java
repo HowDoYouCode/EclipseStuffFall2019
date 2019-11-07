@@ -29,19 +29,20 @@ public class FracCalc {
     	String numerator = "0";
     	String whole = "0";
         String[] operand = input.split(" ");
-        String[] Answerss = operand[2].split("/");
-        denominator = Answerss[1];
-        for (int i = 0; i<Answerss[0].length();i++) {
-        	if (Answerss[0].charAt(i)=='_') {
-        		String[] Answers = Answerss[0].split("_");
-        		whole = Answers[0];
-        		numerator = Answers[1];
-        	} else {
-        		whole = "0";
-        		numerator = Answerss[0];
-        	}
+        if (operand[2].indexOf("_") == -1 && operand[2].indexOf("/") == -1) {
+        	whole = operand[2];
+        } else if (operand[2].indexOf("_") == -1) {
+        	String[] answer = operand[2].split("/");
+        	numerator = answer[0];
+        	denominator = answer[1];
+        } else {
+        	String[] answer = operand[2].split("_");
+        	whole = answer[0];
+        	String[] ators = answer[1].split("/");
+        	numerator = ators[0];
+        	denominator = ators[1];
         }
-    	return (whole+numerator+denominator);  
+    	return ("whole:"+whole+" numerator:"+numerator+" denominator:"+denominator);  
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
