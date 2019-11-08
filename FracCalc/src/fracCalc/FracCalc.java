@@ -25,24 +25,22 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-    	String denominator = "1";
-    	String numerator = "0";
-    	String whole = "0";
+    	String[] numbers = {"0","0","1","0","0","1"};
         String[] operand = input.split(" ");
         if (operand[2].indexOf("_") == -1 && operand[2].indexOf("/") == -1) {
-        	whole = operand[2];
+        	numbers[3] = operand[2];
         } else if (operand[2].indexOf("_") == -1) {
         	String[] answer = operand[2].split("/");
-        	numerator = answer[0];
-        	denominator = answer[1];
+        	numbers[4] = answer[0];
+        	numbers[5] = answer[1];
         } else {
         	String[] answer = operand[2].split("_");
-        	whole = answer[0];
+        	numbers[3] = answer[0];
         	String[] ators = answer[1].split("/");
-        	numerator = ators[0];
-        	denominator = ators[1];
+        	numbers[4] = ators[0];
+        	numbers[5] = ators[1];
         }
-    	return ("whole:"+whole+" numerator:"+numerator+" denominator:"+denominator);  
+    	return ("whole:"+numbers[3]+" numerator:"+numbers[4]+" denominator:"+numbers[5]);  
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
