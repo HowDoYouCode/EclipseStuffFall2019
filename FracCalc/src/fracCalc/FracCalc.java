@@ -25,22 +25,33 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-    	String[] numbers = {"0","0","1","0","0","1"};
+    	String[] whole = {"0","0"};
+    	String[] numerator = {"0","0"};
+    	String[] denominator = {"1","1"};
         String[] operand = input.split(" ");
-        if (operand[2].indexOf("_") == -1 && operand[2].indexOf("/") == -1) {
-        	numbers[3] = operand[2];
-        } else if (operand[2].indexOf("_") == -1) {
-        	String[] answer = operand[2].split("/");
-        	numbers[4] = answer[0];
-        	numbers[5] = answer[1];
-        } else {
-        	String[] answer = operand[2].split("_");
-        	numbers[3] = answer[0];
-        	String[] ators = answer[1].split("/");
-        	numbers[4] = ators[0];
-        	numbers[5] = ators[1];
+        int k = 0;
+        for (int i = 0;i < operand.length; i+=2) {
+        	if (operand[i].indexOf("_") == -1 && operand[i].indexOf("/") == -1) {
+        		whole[k] = operand[i];
+        	} else if (operand[i].indexOf("_") == -1) {
+        		String[] answer = operand[i].split("/");
+        		numerator[k] = answer[0];
+        		denominator[k] = answer[1];
+        	} else {
+        		String[] answer = operand[i].split("_");
+        		whole[k] = answer[0];
+        		String[] ators = answer[1].split("/");
+        		numerator[k] = ators[0];
+        		denominator[k] = ators[1];
+        	}
+        	k = k++;
+        	System.out.println("whole:"+whole[k]+" numerator:"+numerator[k]+" denominator:"+denominator[k]); 
         }
-    	return ("whole:"+numbers[3]+" numerator:"+numbers[4]+" denominator:"+numbers[5]);  
+        for (int i = 0; i < operand.length - operand.length/2 - 1; i++) {
+        	int temp = Integer.parseInt(whole[i]);
+        	int[] intwhole = temp;
+        }
+        return "";
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
