@@ -25,9 +25,12 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-    	String[] whole = {"0","0"};
-    	String[] numerator = {"0","0"};
-    	String[] denominator = {"1","1"};
+    	String[] whole = {"0","0","0","0"};
+    	String[] numerator = {"0","0","0","0"};
+    	String[] denominator = {"1","1","1","1"};
+    	int[] intwhole = {0,0,0,0,0};
+    	int[] intnumerator = {0,0,0,0,0};
+    	int[] intdenominator = {1,1,1,1,1};
         String[] operand = input.split(" ");
         int k = 0;
         for (int i = 0;i < operand.length; i+=2) {
@@ -44,12 +47,16 @@ public class FracCalc {
         		numerator[k] = ators[0];
         		denominator[k] = ators[1];
         	}
+        	intwhole[k] = Integer.parseInt(whole[k]);
+        	intnumerator[k] = Integer.parseInt(numerator[k]);
+        	intdenominator[k] = Integer.parseInt(denominator[k]);
+            System.out.println("whole: "+intwhole[k]);
+            System.out.println("numerator: "+intnumerator[k]);
+            System.out.println("denominator: "+intdenominator[k]);
+            if (operand[i-k].equals("+")) {
+            	
+            }
         	k = k++;
-        	System.out.println("whole:"+whole[k]+" numerator:"+numerator[k]+" denominator:"+denominator[k]); 
-        }
-        for (int i = 0; i < operand.length - operand.length/2 - 1; i++) {
-        	int temp = Integer.parseInt(whole[i]);
-        	int[] intwhole = temp;
         }
         return "";
     }
