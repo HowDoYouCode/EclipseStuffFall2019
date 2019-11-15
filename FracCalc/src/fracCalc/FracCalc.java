@@ -25,40 +25,33 @@ public class FracCalc {
     //      e.g. return ==> "1_1/4"
     public static String produceAnswer(String input) { 
         // TODO: Implement this function to produce the solution to the input
-    	String[] whole = {"0","0","0","0"};
-    	String[] numerator = {"0","0","0","0"};
-    	String[] denominator = {"1","1","1","1"};
-    	int[] intwhole = {0,0,0,0,0};
-    	int[] intnumerator = {0,0,0,0,0};
-    	int[] intdenominator = {1,1,1,1,1};
-        String[] operand = input.split(" ");
-        int k = 0;
-        for (int i = 0;i < operand.length; i+=2) {
-        	if (operand[i].indexOf("_") == -1 && operand[i].indexOf("/") == -1) {
-        		whole[k] = operand[i];
-        	} else if (operand[i].indexOf("_") == -1) {
-        		String[] answer = operand[i].split("/");
-        		numerator[k] = answer[0];
-        		denominator[k] = answer[1];
-        	} else {
-        		String[] answer = operand[i].split("_");
-        		whole[k] = answer[0];
-        		String[] ators = answer[1].split("/");
-        		numerator[k] = ators[0];
-        		denominator[k] = ators[1];
-        	}
-        	intwhole[k] = Integer.parseInt(whole[k]);
-        	intnumerator[k] = Integer.parseInt(numerator[k]);
-        	intdenominator[k] = Integer.parseInt(denominator[k]);
-            System.out.println("whole: "+intwhole[k]);
-            System.out.println("numerator: "+intnumerator[k]);
-            System.out.println("denominator: "+intdenominator[k]);
-            if (operand[i-k].equals("+")) {
-            	
-            }
-        	k = k++;
+    	String[] operand = input.split(" ");
+    	String fracone = operand[0]; // first fraction inputed
+    	String operator = operand[1]; // operator +-*/
+    	String fractwo = operand[2]; // the second fraction 
+    	int[] whole = new int[operand.length - operand.length/2];
+    	int[] numerator = new int[operand.length - operand.length/2];
+    	int[] denominator = new int[operand.length - operand.length/2];
+    	String[] parse = spliting(fracone);
+        whole[0] = Integer.parseInt(parse[0]);
+    	return "";
+    }
+    public static String[] spliting(String str) {
+    	String[] splitted = {"0","0","1"}; // whole, numerator, denominator
+    	if (str.indexOf("_") == -1 && str.indexOf("/") == -1) { // check for whole
+        	splitted[0] = str; // whole
+        } else if (str.indexOf("_") == -1) { // fraction only
+        	String[] answer = str.split("/");
+        	splitted[1] = answer[0]; // numerator
+        	splitted[2] = answer[1]; // denominator
+       	} else { // both whole and fraction
+        	String[] answer = str.split("_");
+        	splitted[0] = answer[0]; //whole
+        	String[] ators = answer[1].split("/");
+        	splitted[1] = ators[0]; // numerator
+        	splitted[2] = ators[1]; // denominator
         }
-        return "";
+    	return splitted;
     }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
