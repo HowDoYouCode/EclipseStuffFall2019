@@ -34,14 +34,20 @@ public class FracCalc {
     	int[] denominator = new int[operand.length - operand.length/2];
     	String[] parse = spliting(fracone);
         whole[0] = Integer.parseInt(parse[0]);
+        numerator[0] = Integer.parseInt(parse[1]);
+        denominator[0] = Integer.parseInt(parse[2]);
+        
     	return "";
     }
     public static String[] spliting(String str) {
     	String[] splitted = {"0","0","1"}; // whole, numerator, denominator
     	if (str.indexOf("_") == -1 && str.indexOf("/") == -1) { // check for whole
         	splitted[0] = str; // whole
+        	splitted[1] = "0"; // numerator
+        	splitted[2] = "1"; //denominator
         } else if (str.indexOf("_") == -1) { // fraction only
         	String[] answer = str.split("/");
+        	splitted[0] = "0"; // whole
         	splitted[1] = answer[0]; // numerator
         	splitted[2] = answer[1]; // denominator
        	} else { // both whole and fraction
