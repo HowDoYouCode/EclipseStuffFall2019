@@ -1,6 +1,5 @@
 package fracCalc;
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class FracCalc {
 
@@ -32,12 +31,58 @@ public class FracCalc {
     	int[] whole = new int[operand.length - operand.length/2];
     	int[] numerator = new int[operand.length - operand.length/2];
     	int[] denominator = new int[operand.length - operand.length/2];
+    	int[] mixfrac = new int[operand.length - operand.length/2];
     	String[] parse = spliting(fracone);
-        whole[0] = Integer.parseInt(parse[0]);
-        numerator[0] = Integer.parseInt(parse[1]);
-        denominator[0] = Integer.parseInt(parse[2]);
-        
-    	return "";
+    	for (int i = 0; i < operand.length - operand.length/2; i++) {
+    		whole[i] = Integer.parseInt(parse[0]);
+    		numerator[i] = Integer.parseInt(parse[1]);
+    		denominator[i] = Integer.parseInt(parse[2]);
+    		mixfrac[i] = toImproperFraction(whole[i], numerator[i], denominator[i]);
+    		parse = spliting(fractwo);
+    	}
+    	int commondenominator = denominator[0] * denominator[1];
+    	int temp;
+    	int temp2;
+    	if (denominator[0] == 1) {
+    		temp = mixfrac[0];
+    	} else { 
+    		temp = denominator[1] * mixfrac[0];
+    	} if (denominator[1] == 1) {
+    		temp2 = mixfrac[1];
+    	} else {
+    		temp2 = denominator[0] * mixfrac[1];
+    	}
+    	if (operator.equals("+")) {
+    		if (numerator[0] == 0 && numerator[1] == 0) {
+    			return (whole[0] + whole[1] + "");
+    		} if (denominator[1] == 1) {
+    			return reduceAnswer(temp + (temp2*denominator[0]), commondenominator);
+    		} else if (denominator[0] == 1) {
+    			return reduceAnswer((temp * denominator[1]) + temp2, commondenominator);
+    		}
+    		return reduceAnswer(temp + temp2, commondenominator);
+    	} else if (operator.equals("-")) {
+    		if (denominator[1] == 1) {
+    			return reduceAnswer(temp - (temp2 - denominator[0]), commondenominator);
+    		} else if (denominator[0] == 1) {
+    			return reduceAnswer((temp * denominator[1]) - temp2, commondenominator);
+    		}
+    		return reduceAnswer(temp - temp2, commondenominator);
+    	} else if (operator.equals("*")) {
+    		if(temp == 0 || temp2 == 0) {
+    			return "0";
+    		} if(denominator[0] == 1 || denominator[1] == 1) {
+    			return reduceAnswer(temp * temp2, commondenominator);
+    		}
+    		return reduceAnswer(temp * temp2 / commondenominator, commondenominator);
+    	} else {
+    		if(denominator[0] == 1 && denominator[1] == 1) {
+    			return reduceAnswer(temp, temp2);
+    		} if(denominator[0] == 1 || denominator[1] == 1) {
+    			return reduceAnswer(temp * denominator[1], denominator[0]);
+    		}
+    		return reduceAnswer(temp, temp2); 
+    	}
     }
     public static String[] spliting(String str) {
     	String[] splitted = {"0","0","1"}; // whole, numerator, denominator
@@ -59,6 +104,47 @@ public class FracCalc {
         }
     	return splitted;
     }
+    public static int toImproperFraction(int wholenum, int numeratornum, int denominatornum) {
+    	int fraction;
+    	if (wholenum < 0) {
+    		fraction = denominatornum * wholenum - numeratornum;
+    	} else { 
+    		fraction = denominatornum * wholenum + numeratornum;
+    	}
+    	System.out.println(fraction);
+    	return fraction;
+    }
+    public static String reduceAnswer(int numerator, int commondenominator) {
+    	int temp = numerator;
+    	int temp2 = commondenominator;
+    	int temp3 = gcf(temp, commondenominator);
+    	temp = temp/temp3;
+    	temp2 = temp2/temp3;
+    	return toMixedNum(temp, temp2);
+    }
+    public static String toMixedNum(int numer, int base) {
+		int wholeNum = numer / base;
+		int newNumer = numer % base;
+		return wholeNum +"_" + newNumer + "/" + base;
+	}
+    public static int gcf(int number1, int number2) {
+		while (number2 != 0) {
+			int replace = number1;
+			number1 = number2;
+			number2 = replace % number2;
+		}
+		double a = (double)number1;
+		absValue(a);
+		number1= (int)a;
+		return number1;
+	}
+    public static double absValue(double number) {
+		if(number < 0) {
+			return -number;
+		}else {
+			return number;
+		}
+	}
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
