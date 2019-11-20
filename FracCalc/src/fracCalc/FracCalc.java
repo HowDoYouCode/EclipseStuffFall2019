@@ -32,16 +32,11 @@ public class FracCalc {
     	int[] numerator = new int[operand.length - operand.length/2];
     	int[] denominator = new int[operand.length - operand.length/2];
     	int[] mixfrac = new int[operand.length - operand.length/2];
-    	String[] parse = spliting(fracone);
-    	for (int i = 0; i < operand.length - operand.length/2; i++) {
-    		whole[i] = Integer.parseInt(parse[0]);
-    		numerator[i] = Integer.parseInt(parse[1]);
-    		denominator[i] = Integer.parseInt(parse[2]);
-    		mixfrac[i] = toImproperFraction(whole[i], numerator[i], denominator[i]);
-    		parse = spliting(fractwo);
-    	}
-    	int commondenominator = denominator[0] * denominator[1];
-    	int temp;
+    	int[] fraction1= toImproperFraction(spliting(fracone));
+    	int[] fraction2 = toImproperFraction(spliting(fractwo));
+  
+    	int commondenominator = fraction1[2] * fraction2[2];
+    /*	int temp;
     	int temp2;
     	if (denominator[0] == 1) {
     		temp = mixfrac[0];
@@ -52,6 +47,7 @@ public class FracCalc {
     	} else {
     		temp2 = denominator[0] * mixfrac[1];
     	}
+    	*/
     	if (operator.equals("+")) {
     		if (numerator[0] == 0 && numerator[1] == 0) {
     			return (whole[0] + whole[1] + "");
@@ -84,34 +80,34 @@ public class FracCalc {
     		return reduceAnswer(temp, temp2); 
     	}
     }
-    public static String[] spliting(String str) {
-    	String[] splitted = {"0","0","1"}; // whole, numerator, denominator
+    public static int[] spliting(String str) {
+    	int[] splitted = {0,0,1}; // whole, numerator, denominator
     	if (str.indexOf("_") == -1 && str.indexOf("/") == -1) { // check for whole
-        	splitted[0] = str; // whole
-        	splitted[1] = "0"; // numerator
-        	splitted[2] = "1"; //denominator
+        	splitted[0] = Integer.parseInt(str); // whole
+      
         } else if (str.indexOf("_") == -1) { // fraction only
         	String[] answer = str.split("/");
-        	splitted[0] = "0"; // whole
-        	splitted[1] = answer[0]; // numerator
-        	splitted[2] = answer[1]; // denominator
+        	
+        	splitted[1] = Integer.parseInt(answer[0]); // numerator
+        	splitted[2] =Integer.parseInt( answer[1]); // denominator
        	} else { // both whole and fraction
         	String[] answer = str.split("_");
-        	splitted[0] = answer[0]; //whole
+        	splitted[0] = Integer.parseInt(answer[0]); //whole
         	String[] ators = answer[1].split("/");
-        	splitted[1] = ators[0]; // numerator
-        	splitted[2] = ators[1]; // denominator
+        	splitted[1] = Integer.parseInt(ators[0]); // numerator
+        	splitted[2] = Integer.parseInt(ators[1]); // denominator
         }
     	return splitted;
     }
-    public static int toImproperFraction(int wholenum, int numeratornum, int denominatornum) {
-    	int fraction;
-    	if (wholenum < 0) {
-    		fraction = denominatornum * wholenum - numeratornum;
+    public static int[] toImproperFraction(int[] fraction) {
+    	
+    	if (fraction[0] < 0) {
+    		fraction[1] = fraction[2] * fraction[0] - fraction[1];
+    		
     	} else { 
-    		fraction = denominatornum * wholenum + numeratornum;
+    		fraction[1] = fraction[2] * fraction[0] + fraction[1];
     	}
-    	System.out.println(fraction);
+    	fraction[0]=0;
     	return fraction;
     }
     public static String reduceAnswer(int numerator, int commondenominator) {
