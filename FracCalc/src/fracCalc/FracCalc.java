@@ -28,35 +28,19 @@ public class FracCalc {
     	String fracone = operand[0]; // first fraction inputed
     	String operator = operand[1]; // operator +-*/
     	String fractwo = operand[2]; // the second fraction 
-    	int[] whole = new int[operand.length - operand.length/2];
-    	int[] numerator = new int[operand.length - operand.length/2];
-    	int[] denominator = new int[operand.length - operand.length/2];
-    	int[] mixfrac = new int[operand.length - operand.length/2];
     	int[] fraction1= toImproperFraction(spliting(fracone));
     	int[] fraction2 = toImproperFraction(spliting(fractwo));
   
     	int commondenominator = fraction1[2] * fraction2[2];
-    /*	int temp;
-    	int temp2;
-    	if (denominator[0] == 1) {
-    		temp = mixfrac[0];
-    	} else { 
-    		temp = denominator[1] * mixfrac[0];
-    	} if (denominator[1] == 1) {
-    		temp2 = mixfrac[1];
-    	} else {
-    		temp2 = denominator[0] * mixfrac[1];
-    	}
-    	*/
     	if (operator.equals("+")) {
-    		if (numerator[0] == 0 && numerator[1] == 0) {
-    			return (whole[0] + whole[1] + "");
-    		} if (denominator[1] == 1) {
-    			return reduceAnswer(temp + (temp2*denominator[0]), commondenominator);
-    		} else if (denominator[0] == 1) {
-    			return reduceAnswer((temp * denominator[1]) + temp2, commondenominator);
+    		if (fraction1[1] == 0 && fraction2[1] == 0) {
+    			return (fraction1[0] + fraction2[0] + "");
+    		} if (fraction2[2] == 1) {
+    			return toMixedNum(fraction1[1] += fraction2[1] * fraction1[2], commondenominator);
+    		} else if (fraction1[2] == 1) {
+    			return toMixedNum(fraction2[1] += (fraction1[1] * fraction2[2]), commondenominator);
     		}
-    		return reduceAnswer(temp + temp2, commondenominator);
+    		return toMixedNum(,commondenominator);
     	} else if (operator.equals("-")) {
     		if (denominator[1] == 1) {
     			return reduceAnswer(temp - (temp2 - denominator[0]), commondenominator);
@@ -99,8 +83,7 @@ public class FracCalc {
         }
     	return splitted;
     }
-    public static int[] toImproperFraction(int[] fraction) {
-    	
+    public static int[] toImproperFraction(int[] fraction) {	
     	if (fraction[0] < 0) {
     		fraction[1] = fraction[2] * fraction[0] - fraction[1];
     		
