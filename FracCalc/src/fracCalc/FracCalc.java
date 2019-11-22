@@ -36,32 +36,32 @@ public class FracCalc {
     		if (fraction1[1] == 0 && fraction2[1] == 0) {
     			return (fraction1[0] + fraction2[0] + "");
     		} if (fraction2[2] == 1) {
-    			return toMixedNum(fraction1[1] += fraction2[1] * fraction1[2], commondenominator);
+    			return reduceAnswer(fraction1[1] += fraction2[1] * fraction1[2], commondenominator);
     		} else if (fraction1[2] == 1) {
-    			return toMixedNum(fraction2[1] += (fraction1[1] * fraction2[2]), commondenominator);
+    			return reduceAnswer(fraction2[1] += (fraction1[1] * fraction2[2]), commondenominator);
     		}
-    		return toMixedNum(,commondenominator);
+    		return reduceAnswer((fraction1[1] * fraction2[2]) + (fraction2[1] * fraction1[2]), commondenominator);
     	} else if (operator.equals("-")) {
-    		if (denominator[1] == 1) {
-    			return reduceAnswer(temp - (temp2 - denominator[0]), commondenominator);
-    		} else if (denominator[0] == 1) {
-    			return reduceAnswer((temp * denominator[1]) - temp2, commondenominator);
+    		if (fraction1[2] == 1) {
+    			return reduceAnswer(fraction1[1] - (fraction2[1] * fraction1[2]), commondenominator);
+    		} else if (fraction2[2] == 1) {
+    			return reduceAnswer((fraction2[1] * fraction1[2]) - fraction1[1], commondenominator);
     		}
-    		return reduceAnswer(temp - temp2, commondenominator);
+    		return reduceAnswer((fraction1[1] * fraction2[2]) - (fraction2[1] * fraction1[2]), commondenominator);
     	} else if (operator.equals("*")) {
-    		if(temp == 0 || temp2 == 0) {
+    		if (fraction1[1] == 0 || fraction2[1] == 0) {
     			return "0";
-    		} if(denominator[0] == 1 || denominator[1] == 1) {
-    			return reduceAnswer(temp * temp2, commondenominator);
-    		}
-    		return reduceAnswer(temp * temp2 / commondenominator, commondenominator);
+    		} if (fraction1[2] == 1 || fraction2[2] == 1) {
+    			return reduceAnswer(fraction1[1] * fraction2[1], commondenominator);
+    		} 
+    		return reduceAnswer(fraction1[1] * fraction2[1], commondenominator);
     	} else {
-    		if(denominator[0] == 1 && denominator[1] == 1) {
-    			return reduceAnswer(temp, temp2);
-    		} if(denominator[0] == 1 || denominator[1] == 1) {
-    			return reduceAnswer(temp * denominator[1], denominator[0]);
+    		if (fraction1[2] == 1 && fraction2[2] == 1) {
+    			return reduceAnswer(fraction1[1], fraction2[1]);
+    		} else if (fraction1[2] == 1 || fraction2[2] == 1) {
+    			return reduceAnswer(fraction1[1] * fraction2[2], fraction1[2]);
     		}
-    		return reduceAnswer(temp, temp2); 
+    		return reduceAnswer(fraction1[1] * fraction2[2], fraction1[2] * fraction2[1]);
     	}
     }
     public static int[] spliting(String str) {
@@ -94,17 +94,17 @@ public class FracCalc {
     	return fraction;
     }
     public static String reduceAnswer(int numerator, int commondenominator) {
-    	int temp = numerator;
-    	int temp2 = commondenominator;
-    	int temp3 = gcf(temp, commondenominator);
-    	temp = temp/temp3;
-    	temp2 = temp2/temp3;
-    	return toMixedNum(temp, temp2);
+    	int tempnumerator = numerator;
+    	int tempdenominator = commondenominator;
+    	int temp = gcf(tempnumerator, commondenominator);
+    	tempnumerator = tempnumerator/temp;
+    	tempdenominator = tempdenominator/temp;
+    	return toMixedNum(tempnumerator, tempdenominator);
     }
     public static String toMixedNum(int numer, int base) {
 		int wholeNum = numer / base;
 		int newNumer = numer % base;
-		return wholeNum +"_" + newNumer + "/" + base;
+		return wholeNum +"_" + absValue(newNumer) + "/" + absValue(base);
 	}
     public static int gcf(int number1, int number2) {
 		while (number2 != 0) {
@@ -117,13 +117,20 @@ public class FracCalc {
 		number1= (int)a;
 		return number1;
 	}
-    public static double absValue(double number) {
+    public static int absValue(int number) {
 		if(number < 0) {
 			return -number;
 		}else {
 			return number;
 		}
 	}
+    public static double absValue(double number) {
+		if(number < 0) {
+			return -number;
+		}else {
+			return number;
+		}
+    }
 
     // TODO: Fill in the space below with any helper methods that you think you will need
     
