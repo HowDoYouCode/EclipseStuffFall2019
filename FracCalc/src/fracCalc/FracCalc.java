@@ -1,5 +1,5 @@
 package fracCalc;
-import java.util.Scanner;
+import java.util.*;
 
 public class FracCalc {
 
@@ -30,7 +30,7 @@ public class FracCalc {
     	String fractwo = operand[2]; // the second fraction 
     	int[] fraction1= toImproperFraction(spliting(fracone));
     	int[] fraction2 = toImproperFraction(spliting(fractwo));
-  
+    	
     	int commondenominator = fraction1[2] * fraction2[2];
     	if (operator.equals("+")) {
     		if (fraction1[1] == 0 && fraction2[1] == 0) {
@@ -59,7 +59,7 @@ public class FracCalc {
     		if (fraction1[2] == 1 && fraction2[2] == 1) {
     			return reduceAnswer(fraction1[1], fraction2[1]);
     		} else if (fraction1[2] == 1 || fraction2[2] == 1) {
-    			return reduceAnswer(fraction1[1] * fraction2[2], fraction1[2]);
+    			return reduceAnswer(fraction1[1] * fraction2[2], fraction1[2] * fraction2[1]);
     		}
     		return reduceAnswer(fraction1[1] * fraction2[2], fraction1[2] * fraction2[1]);
     	}
@@ -102,9 +102,14 @@ public class FracCalc {
     	return toMixedNum(tempnumerator, tempdenominator);
     }
     public static String toMixedNum(int numer, int base) {
-		int wholeNum = numer / base;
-		int newNumer = numer % base;
-		return wholeNum +"_" + absValue(newNumer) + "/" + absValue(base);
+		int whole = numer / base;
+		int newNumerator = numer % base;
+		if (absValue(newNumerator) == 0 && absValue(base) == 1) {
+			return whole+"";
+		} else if (whole == 0) {
+			return newNumerator + "/" + absValue(base);
+		}
+		return whole +"_" + absValue(newNumerator) + "/" + absValue(base);
 	}
     public static int gcf(int number1, int number2) {
 		while (number2 != 0) {
