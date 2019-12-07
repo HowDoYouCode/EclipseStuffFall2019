@@ -18,7 +18,13 @@ public class ArrayListPracticeLab
 	 * Write a method called convertArrayToList that accepts one parameter, an array of Strings, and returns 
 	 * an ArrayList containing those Strings
 	 */
-	
+	public static ArrayList<String> convertArrayToList(String arr[]) {
+		ArrayList<String> arrstrings = new ArrayList<String>();
+		for (int i = 0; i < arrstrings.size(); i++) {
+			arrstrings.add(arr[i]);
+		}
+		return arrstrings;
+	}
 	
 	
 	
@@ -29,7 +35,15 @@ public class ArrayListPracticeLab
 	 * returns an int, the length of the longest string in the list. If your method is passed an 
 	 * empty list, it should return 0.
 	 */
-	
+	public static int maxLength(ArrayList<String> arr) {
+		for (int i = 0; i < arr.size(); i++) {
+			int arrstr = arr.size(i);
+			if (arrstr.equals(0)) {
+				
+			}
+		}
+		return arr.size();
+	}
 	
 	
 	
