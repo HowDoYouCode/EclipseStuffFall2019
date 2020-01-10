@@ -1,7 +1,8 @@
 public class Split {
 
 	public static void main(String[] args) {
-
+		
+	
 // Your task Part 0
 
 //String.split();
@@ -29,8 +30,8 @@ public class Split {
 /*Write a method that take in a string like
 
 * "applespineapplesbreadlettucetomatobaconmayohambreadcheese"
-
-* describing a sandwich.
+*/
+/* describing a sandwich.
 
 * Use String.split to split up the sandwich by the word "bread" and return what's in the middle of
 
@@ -55,7 +56,6 @@ public class Split {
 * Again, what if it's a fancy sandwich with multiple pieces of bread?
 
 */
-
- }
+	}
 
 }
